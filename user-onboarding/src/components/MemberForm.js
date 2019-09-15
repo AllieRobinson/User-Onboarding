@@ -14,30 +14,39 @@ const MemberForm = ({ errors, touched, status }) => {
        }, [status])
 
        return (
-       <Form>
-              {touched.name && errors.name && <p className="error">{errors.name}</p>}
-              <Field name="name" 
-                     type="text" 
-                     placeholder="Full Name" 
-                     /> 
-              {touched.email && errors.email && <p className="error">{errors.email}</p>}
-              <Field name="email" 
-                     type="email" 
-                     placeholder="Email" 
-                     /> 
-              {touched.password && errors.password && <p className="error">{errors.password}</p>}
-              <Field name="password" 
-                     type="password" 
-                     placeholder="Password" 
-                     /> 
-              {touched.terms && errors.terms && <p className="error">{errors.terms}</p>}
-              <Field name="terms" 
-                     type="checkbox"  
-                     /> 
-              <button type="submit">
-                     Submit
-              </button>
-       </Form>
+       <>
+              <Form>
+                     {touched.name && errors.name && <p className="error">{errors.name}</p>}
+                     <Field name="name" 
+                            type="text" 
+                            placeholder="Full Name" 
+                            /> 
+                     {touched.email && errors.email && <p className="error">{errors.email}</p>}
+                     <Field name="email" 
+                            type="email" 
+                            placeholder="Email" 
+                            /> 
+                     {touched.password && errors.password && <p className="error">{errors.password}</p>}
+                     <Field name="password" 
+                            type="password" 
+                            placeholder="Password" 
+                            /> 
+                     {touched.terms && errors.terms && <p className="error">{errors.terms}</p>}
+                     <Field name="terms" 
+                            type="checkbox"  
+                            /> 
+                     <button type="submit">
+                            Submit
+                     </button>
+              </Form>
+              {members.map(member => {
+                     return ( 
+                     <div key={member.email}>
+                           <p>{member.name}</p> 
+                           <p>{member.email}</p>
+                     </div>
+              )})}
+       </>
        )
 }
 
